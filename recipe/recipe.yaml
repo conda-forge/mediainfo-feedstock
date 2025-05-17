@@ -8,8 +8,9 @@ package:
 
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
-  git: https://github.com/MediaArea/MediaInfo
-  tag: "v${{ version }}"
+  - git: https://github.com/MediaArea/MediaInfo
+    tag: "v${{ version }}"
+  - path: ./build/
 
 build:
   script:
@@ -21,7 +22,9 @@ build:
           ./configure --prefix="$PREFIX" || (cat config.log && false)
           make install
         else: |
-          msbuild -restore -p:RestorePackagesConfig=true -p:Configuration=Release .\Project\MSVC2022\CLI\MediaInfo.vcxproj
+          cmake . -B build %CMAKE_ARGS% -G Ninja
+
+          ninja -v -C build install
 
   number: 0
 
@@ -29,7 +32,7 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
-    # - ${{ stdlib('c') }}
+    - ${{ stdlib('c') }}
     - if: unix
       then:
         - pkg-config
@@ -37,6 +40,9 @@ requirements:
         - libtool
         - automake
         - make
+      else:
+        - cmake
+        - ninja
   host:
     - libmediainfo ${{ version }}.*
     - libzen
