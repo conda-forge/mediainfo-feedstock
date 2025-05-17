@@ -1,6 +1,6 @@
 context:
   name: mediainfo
-  version: "25.04"
+  version: "24.12"
 
 package:
   name: ${{ name }}
@@ -9,7 +9,7 @@ package:
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
   - url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: "131b27960490887efee8db6a8471f98c37b478360060f9058d047e3c6a3afc44"
+    sha256: "500fc796fd4fc42b69e7c410ffa46c18e00f639e3b3c107eb3389ba71de06273"
     # filter:
     #   exclude:
     #     - Project/OBS/**
