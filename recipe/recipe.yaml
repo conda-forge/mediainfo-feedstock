@@ -8,12 +8,12 @@ package:
 
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
-  - git: https://github.com/trim21/MediaInfo
-    branch: wip
+  - url: https://github.com/trim21/MediaInfo/archive/refs/heads/wip.zip
+    sha256: "250454c63a83c5d4d6cb2a0f66bdb23c17d94d5860685554a5fa1cdcfb4778de"
     # filter:
-      # exclude:
-        # - Project/OBS/**
-        # - Project/debian/**
+    #   exclude:
+    #     - Project/OBS/**
+    #     - Project/debian/**
   - path: ./build/
 
 build:
