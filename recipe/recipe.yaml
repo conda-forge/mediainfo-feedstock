@@ -1,6 +1,6 @@
 context:
   name: mediainfo
-  version: "24.12"
+  version: "25.04"
 
 package:
   name: ${{ name }}
@@ -8,12 +8,12 @@ package:
 
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
-  - url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: "500fc796fd4fc42b69e7c410ffa46c18e00f639e3b3c107eb3389ba71de06273"
+  - git: https://github.com/MediaArea/MediaInfo
+    tag: "v${{ version }}"
     # filter:
-    #   exclude:
-    #     - Project/OBS/**
-    #     - Project/debian/**
+    # exclude:
+    # - Project/OBS/**
+    # - Project/debian/**
   - path: ./build/
 
 build:
@@ -37,9 +37,10 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
+    - pkg-config
+
     - if: unix
       then:
-        - pkg-config
         - autoconf
         - libtool
         - automake
@@ -51,6 +52,7 @@ requirements:
     - libmediainfo ${{ version }}.*
     - libzen
     - zlib
+    - tinyxml2
 
 tests:
   - script: mediainfo --help

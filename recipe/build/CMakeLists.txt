@@ -6,16 +6,21 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../Source)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source)
 
 # Source files
-file(GLOB CLI_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../../../Source/CLI/*.cpp)
+set(CLI_SOURCES 
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/CLI_Main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/CommandLine_Parser.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/Help.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/Core.cpp
+)
 
 # Find required packages
 find_package(ZLIB REQUIRED)
 find_package(Threads REQUIRED)
 find_package(zenlib REQUIRED)
-find_package(tinyxml2 REQUIRED)
+# find_package(tinyxml2 REQUIRED)
 find_package(mediainfolib REQUIRED)
 
 # Main executable
@@ -27,10 +32,9 @@ target_compile_definitions(mediainfo_cli PRIVATE UNICODE)
 target_link_libraries(mediainfo_cli
     PRIVATE
     mediainfo
-    tinyxml2::tinyxml2
+    # tinyxml2::tinyxml2
     ZLIB::ZLIB
     Threads::Threads
 )
-
 
 install(TARGETS mediainfo_cli DESTINATION bin)
