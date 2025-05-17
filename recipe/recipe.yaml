@@ -8,9 +8,12 @@ package:
 
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
-  - git: https://github.com/MediaArea/MediaInfo
-    # v25.04
-    rev: '8fb5f2180acf4d417bb4ad1eabeec63f5950b0b7'
+  - url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
+    sha256: "131b27960490887efee8db6a8471f98c37b478360060f9058d047e3c6a3afc44"
+    # filter:
+    #   exclude:
+    #     - Project/OBS/**
+    #     - Project/debian/**
   - path: ./build/
 
 build:
