@@ -21,7 +21,6 @@ build:
           ./configure --prefix="$PREFIX" || (cat config.log && false)
           make install
         else: |
-          pushd Project/MSVC2022/CLI
           msbuild -restore -p:RestorePackagesConfig=true -p:Configuration=Release ./Project/MSVC2022/CLI/MediaInfo.sln
 
 requirements:
