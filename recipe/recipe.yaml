@@ -11,30 +11,25 @@ source:
   sha256: "a03490cddb72840882600bde4d0b9c329e4ef3d4f37a2aeed59720bb93498283"
 
 build:
-  number: 0
+  skip: win
   script:
-    content:
-      - if: unix
-        then: |
-          pushd Project/GNU/CLI
-          autoreconf -fi
-          ./configure --prefix="$PREFIX" || (cat config.log && false)
-          make install
-        else: |
-          MSBuild.exe -restore -p:RestorePackagesConfig=true -p:Configuration=Release ./Project/MSVC2022/CLI/MediaInfo.vcxproj
+    content: |
+      pushd Project/GNU/CLI
+      autoreconf -fi
+      ./configure --prefix="$PREFIX" || (cat config.log && false)
+      make install
+  number: 0
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
-    # - ${{ stdlib('c') }}
-    - if: unix
-      then:
-        - pkg-config
-        - autoconf
-        - libtool
-        - automake
-        - make
+    - ${{ stdlib('c') }}
+      - pkg-config
+      - autoconf
+      - libtool
+      - automake
+      - make
   host:
     - libmediainfo ${{ version }}.*
     - libzen
