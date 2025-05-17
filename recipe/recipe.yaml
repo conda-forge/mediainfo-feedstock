@@ -1,14 +1,13 @@
 context:
   name: mediainfo
-  src_version: "25.03"
-  version: "25.3"
+  version: "25.03"
 
 package:
   name: ${{ name }}
   version: ${{ version }}
 
 source:
-  url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ src_version }}.tar.gz
+  url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
   sha256: "a03490cddb72840882600bde4d0b9c329e4ef3d4f37a2aeed59720bb93498283"
 
 build:
