@@ -57,8 +57,8 @@ requirements:
 tests:
   - script: mediainfo --help
   - package_contents:
-      files:
-        - bin/mediainfo
+      bin:
+        - mediainfo
 
 about:
   homepage: https://mediaarea.net/MediaInfo

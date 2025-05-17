@@ -26,7 +26,10 @@ find_package(mediainfolib REQUIRED)
 # Main executable
 add_executable(mediainfo_cli ${CLI_SOURCES})
 
+set_target_properties(mediainfo_cli PROPERTIES OUTPUT_NAME mediainfo)
+
 target_compile_definitions(mediainfo_cli PRIVATE UNICODE)
+target_compile_definitions(mediainfo_cli PRIVATE MEDIAINFO_DLL_RUNTIME)
 
 # Link libraries
 target_link_libraries(mediainfo_cli
