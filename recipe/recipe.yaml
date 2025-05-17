@@ -1,14 +1,14 @@
 context:
   name: mediainfo
-  version: "24.12"
+  version: "25.03"
 
 package:
-  name: ${{ name|lower }}
+  name: ${{ name }}
   version: ${{ version }}
 
 source:
   url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 500fc796fd4fc42b69e7c410ffa46c18e00f639e3b3c107eb3389ba71de06273
+  sha256: "a03490cddb72840882600bde4d0b9c329e4ef3d4f37a2aeed59720bb93498283"
 
 build:
   skip: win
@@ -31,14 +31,14 @@ requirements:
     - automake
     - make
   host:
-    - libmediainfo ${{ version }}
+    - libmediainfo ${{ version }}.*
     - libzen
     - zlib
 
 tests:
   - script: mediainfo --help
   - package_contents:
-      files: 
+      files:
         - bin/mediainfo
 
 about:
