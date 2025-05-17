@@ -21,16 +21,16 @@ build:
           ./configure --prefix="$PREFIX" || (cat config.log && false)
           make install
         else: |
-          msbuild -restore -p:RestorePackagesConfig=true -p:Configuration=Release ./Project/MSVC2022/CLI/MediaInfo.sln
+          MSBuild.exe -restore -p:RestorePackagesConfig=true -p:Configuration=Release ./Project/MSVC2022/CLI/MediaInfo.vcxproj
 
 requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
-    - ${{ stdlib('c') }}
-    - pkg-config
+    # - ${{ stdlib('c') }}
     - if: unix
       then:
+        - pkg-config
         - autoconf
         - libtool
         - automake
