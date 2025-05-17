@@ -35,7 +35,6 @@ target_compile_definitions(mediainfo_cli PRIVATE MEDIAINFO_DLL_RUNTIME)
 target_link_libraries(mediainfo_cli
     PRIVATE
     mediainfo
-    # tinyxml2::tinyxml2
     ZLIB::ZLIB
     Threads::Threads
 )

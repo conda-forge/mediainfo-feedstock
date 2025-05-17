@@ -52,7 +52,6 @@ requirements:
     - libmediainfo ${{ version }}.*
     - libzen
     - zlib
-    - tinyxml2
 
 tests:
   - script: mediainfo --help
