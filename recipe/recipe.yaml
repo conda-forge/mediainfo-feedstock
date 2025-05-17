@@ -25,11 +25,11 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
-      - pkg-config
-      - autoconf
-      - libtool
-      - automake
-      - make
+    - pkg-config
+    - autoconf
+    - libtool
+    - automake
+    - make
   host:
     - libmediainfo ${{ version }}.*
     - libzen
