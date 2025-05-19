@@ -17,6 +17,7 @@ build:
       - git clone https://github.com/MediaArea/MediaInfo.git src --branch v${{ version }} --depth 1 --config core.symlinks=false
       - if: unix
         then: |
+          pushd src
           pushd Project/GNU/CLI
           autoreconf -fi
           ./configure --prefix="$PREFIX" || (cat config.log && false)
