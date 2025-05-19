@@ -8,13 +8,13 @@ package:
 
 source:
   # repo contains symlinks which is hard to handle if we use tarball or zip.
-  - url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: "131b27960490887efee8db6a8471f98c37b478360060f9058d047e3c6a3afc44"
   - path: ./build/
 
 build:
   script:
     content:
+      # repo contains symlinks which is hard to handle if we use tarball or zip.
+      - git clone https://github.com/MediaArea/MediaInfo.git src --branch v${{ version }} --depth 1 --config core.symlinks=false
       - if: unix
         then: |
           pushd Project/GNU/CLI
@@ -26,7 +26,7 @@ build:
 
           ninja -v -C build install
 
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -62,8 +62,8 @@ about:
     MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.
   license: BSD-2-Clause
   license_file:
-    - LICENSE
-    - License.html
+    - src/LICENSE
+    - src/License.html
   documentation: https://mediaarea.net/MediaInfo
   repository: https://github.com/MediaArea/MediaInfo
 

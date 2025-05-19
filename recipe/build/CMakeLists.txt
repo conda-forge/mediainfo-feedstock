@@ -6,14 +6,14 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Source)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Source)
 
 # Source files
-set(CLI_SOURCES 
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/CLI_Main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/CommandLine_Parser.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/CLI/Help.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Source/Common/Core.cpp
+set(CLI_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Source/CLI/CLI_Main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Source/CLI/CommandLine_Parser.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Source/CLI/Help.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Source/Common/Core.cpp
 )
 
 # Find required packages
