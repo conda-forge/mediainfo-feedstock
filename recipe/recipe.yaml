@@ -27,6 +27,7 @@ build:
           make install
 
         # repo contains symlinks which is hard to handle if we use tarball or zip.
+        # use source.url after rattler-build/issues/1671 is fixed
         else: |
           git clone https://github.com/MediaArea/MediaInfo.git src --branch v${{ version }} --depth 1 --config core.symlinks=false
 
