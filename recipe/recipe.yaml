@@ -1,6 +1,6 @@
 context:
   name: mediainfo
-  version: "25.04"
+  version: "25.10"
 
 package:
   name: ${{ name }}
@@ -13,7 +13,7 @@ source:
       path: ./build/
     else:
       url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-      sha256: "131b27960490887efee8db6a8471f98c37b478360060f9058d047e3c6a3afc44"
+      sha256: "2edaff16dfad9ee372d17d6d01eb2e3d2f8ee8dd4af606b1ee6f045c9b009662"
       target_directory: src
 
 build:
@@ -35,7 +35,7 @@ build:
 
           ninja -v -C build install
 
-  number: 1
+  number: 0
 
 requirements:
   build:
