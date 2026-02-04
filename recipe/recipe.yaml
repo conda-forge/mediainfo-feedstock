@@ -1,6 +1,6 @@
 context:
   name: mediainfo
-  version: "25.10"
+  version: "26.01"
 
 package:
   name: ${{ name }}
@@ -13,7 +13,7 @@ source:
       path: ./build/
     else:
       url: https://github.com/MediaArea/MediaInfo/archive/refs/tags/v${{ version }}.tar.gz
-      sha256: "2edaff16dfad9ee372d17d6d01eb2e3d2f8ee8dd4af606b1ee6f045c9b009662"
+      sha256: "cec53d8aa143376965d8da72cfaaed4e1e432e23a19ed26cbdf8e69a14e93365"
       target_directory: src
 
 build:
